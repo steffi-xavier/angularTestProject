@@ -11,7 +11,7 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  userData: object;
+  userData: any;
   selectedFiles: FileList;
   currentFile: File;
   progress = 0;
@@ -33,16 +33,7 @@ export class HomeComponent implements OnInit {
              }
     );
   }
-  // downloadFile(){
-  //   const link = document.createElement('a');
-  //   link.setAttribute('target', '_blank');
-  //   link.setAttribute('href', '_File_Saved_Path');
-  //   link.setAttribute('download', 'file_name.pdf');
-  //   document.body.appendChild(link);
-  //   link.click();
-  //   link.remove();
-  // }
-  
+    
   selectFile(event) {
     this.selectedFiles = event.target.files;
   }
