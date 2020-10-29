@@ -1,0 +1,71 @@
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 offset-sm-3">
+<h2>Register</h2>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" formControlName="firstName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" formControlName="lastName" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && registerForm.controls.email.errors }" />
+        <div *ngIf="submitted && registerForm.controls.email.errors" class="invalid-feedback">
+            <div *ngIf="registerForm.controls.email.errors.required">Email Id is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="mobileNo">Mobile No</label>
+        <input type="text" formControlName="mobileNo" class="form-control" [ngClass]="{ 'is-invalid': submitted && registerForm.controls.mobileNo.errors }" />
+        <div *ngIf="submitted && registerForm.controls.mobileNo.errors" class="invalid-feedback">
+            <div *ngIf="registerForm.controls.mobileNo.errors.required">Mobile No is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="gender">Gender</label>
+        <label>
+            <input type="radio" value="female" name="gender" formControlName="gender">
+            Female
+          </label>
+      
+          <label>
+            <input type="radio" value="male" name="gender" formControlName="gender">     
+            Male
+        </label>
+    </div>
+    <div class="form-group">
+        <label for="addrress">Address</label>
+        <textarea formControlName="address" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && registerForm.controls.password.errors }" />
+        <div *ngIf="submitted && registerForm.controls.password.errors" class="invalid-feedback">
+            <div *ngIf="registerForm.controls.password.errors.required">Password is required</div>
+            <div *ngIf="registerForm.controls.password.errors.minlength">Password must be at least 8 characters</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="conPassword">Confirm Password</label>
+        <input type="password" formControlName="conPassword" class="form-control" [ngClass]="{ 'is-invalid': (submitted && registerForm.controls.conPassword.errors) || (submitted && registerForm.errors)}" />
+         <div *ngIf="submitted && registerForm.controls.conPassword.errors" class="invalid-feedback">
+            <div *ngIf="registerForm.controls.conPassword.errors?.required">Confirm Password is required</div>
+        </div>
+        <div class="invalid-feedback" *ngIf="registerForm.errors?.mismatch && registerForm.controls.conPassword.value !== ''">Password doesn't match</div>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary">
+            Register
+        </button>
+        <a routerLink="/login" class="btn btn-link">Login</a>
+    </div>
+</form>
+</div>
+</div>
+</div>
+</div>
